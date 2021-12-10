@@ -38,5 +38,5 @@ stages:
     steps:
     - task: NuGetAuthenticate@0
     - pwsh:  |
-      Register-PackageSource -Name "PackageSource" -Location "https://pkgs.dev.azure.com/petjohansson/pipelines-python-sample/_packaging/python-utility/nuget/v3/index.json" -ProviderName NuGet
-      Get-PSRepository
+        Register-PackageSource -Name "PackageSource" -Location "https://pkgs.dev.azure.com/petjohansson/pipelines-python-sample/_packaging/python-utility/nuget/v3/index.json" -ProviderName NuGet
+        Get-PSRepository
