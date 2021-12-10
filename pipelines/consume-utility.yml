@@ -46,7 +46,8 @@ stages:
         downloadPath: '$(System.ArtifactsDirectory)'
         extract: false
     - pwsh:  |
-        Install-Module -Scope CurrentUser Show-Calendar -Source $(System.ArtifactsDirectory)/ -Force
+        Register-PSRepository -Name $(System.ArtifactsDirectory) -SourceLocation $(System.ArtifactsDirectory) -PublishLocation $(System.ArtifactsDirectory) -InstallationPolicy Trusted
+        Install-Module -Scope CurrentUser Show-Calendar -Force
     - pwsh:  |
         Get-Command -Module Show-Calendar
         Show-Calendar
