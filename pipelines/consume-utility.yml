@@ -2,6 +2,9 @@ pool:
   vmImage: 'ubuntu-latest'
 variables:
   python.version: 3.6
+  project.name: pipelines-python-sample
+  feed.name: python-utility
+  utility.version: 0.1
 
 stages:
 - stage: Build
@@ -22,8 +25,8 @@ stages:
     - task: TwineAuthenticate@1
       displayName: Twine Authenticate
       inputs:
-        artifactFeed: pipelines-python-sample/python-utility
+        artifactFeed: $(project.name)/$(feed.name)
 
     - script: |
-        pip install utility==0.1
+        pip install --index-url https://pkgs.dev.azure.com/$(project.name)/_packaging/$(feed.name)/pypi/simple utility==$(utility.versiohn)
         utility xyz
