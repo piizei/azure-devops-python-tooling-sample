@@ -48,4 +48,4 @@ stages:
     - pwsh:  |
         Register-PSRepository -Name Local_Nuget_Feed -SourceLocation $(System.ArtifactsDirectory) -PublishLocation $(System.ArtifactsDirectory) -InstallationPolicy Trusted
         Install-Package Show-Calendar
-       
+        Show-Calendar 
