@@ -44,10 +44,10 @@ stages:
         definition: 'Show-Calendar'
         version: '0.0.1'
         downloadPath: '$(System.ArtifactsDirectory)'
-        extract: true
+        extract: false
     - script: |
         pwd
         ls $(System.ArtifactsDirectory)/
     - pwsh:  |
-        Install-Package Show-Calendar -Source $(System.ArtifactsDirectory)
+        Install-Package Show-Calendar -Source $(System.ArtifactsDirectory)/
         #Show-Calendar 
