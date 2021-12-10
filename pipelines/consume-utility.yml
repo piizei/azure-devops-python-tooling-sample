@@ -23,10 +23,9 @@ stages:
         pip install twine keyring artifacts-keyring wheel
       displayName: 'Install dependencies'
 
-    - task: TwineAuthenticate@1
-      displayName: Twine Authenticate
+    - task: PipAuthenticate@1
       inputs:
-        artifactFeed: $(project.name)/$(feed.name)
+        artifactFeeds: $(project.name)/$(feed.name)
 
     - script: |
         pip install --index-url https://pkgs.dev.azure.com/$(devops.tenant)/$(project.name)/_packaging/$(feed.name)/pypi/simple utility==$(utility.version)
