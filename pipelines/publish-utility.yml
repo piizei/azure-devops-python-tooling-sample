@@ -22,11 +22,6 @@ stages:
       displayName: 'Install dependencies'
 
     - script: |
-        pip install pytest pytest-azurepipelines
-        pytest
-      displayName: 'pytest'
-
-    - script: |
         python setup.py sdist
       displayName: 'Artifact creation'
 
