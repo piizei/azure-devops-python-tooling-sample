@@ -44,9 +44,10 @@ stages:
         definition: Show-Calendar
         version: '0.0.1'
         downloadPath: '$(System.ArtifactsDirectory)'
-        extract: true
+        extract: false
     - pwsh:  |
-        Register-PSRepository -Name Local_Nuget_Feed -SourceLocation $(System.ArtifactsDirectory) -PublishLocation $(System.ArtifactsDirectory) -InstallationPolicy Trusted
-        Get-PSRepository
-        Install-Package --force Show-Calendar
-        Show-Calendar 
+        dir $(System.ArtifactsDirectory)
+        #Register-PSRepository -Name Local_Nuget_Feed -SourceLocation $(System.ArtifactsDirectory) -PublishLocation $(System.ArtifactsDirectory) -InstallationPolicy Trusted
+        #Get-PSRepository
+        #Install-Package --force Show-Calendar
+        #Show-Calendar 
