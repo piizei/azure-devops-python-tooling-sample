@@ -37,8 +37,7 @@ stages:
     - script: |
         python -m twine upload -r python-utility --config-file $(PYPIRC_PATH) dist/*.whl
       workingDirectory: python-module
-
-stages:
+      
 - stage: pwsh
   displayName: Build and Publish Powershell 🏗️
   jobs:
