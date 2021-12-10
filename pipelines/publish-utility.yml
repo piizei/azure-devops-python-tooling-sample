@@ -5,25 +5,12 @@ pool:
   vmImage: 'ubuntu-latest'
 variables:
   python.version: 3.6
+  project.name: pipelines-python-sample
+  feed.name: python-utility
+
 
 stages:
-- stage: pwsh
-  displayName: Build and Publish Powershell 🏗️
-  jobs:
-  - job: Build
-    steps:
-    - script: |
-       nuget pack Show-Calendar.nuspec
-      workingDirectory: pwsh-module/Show-Calendar
-    - task: NuGetCommand@2
-      inputs:
-        command: 'push' 
-        packagesToPush: 'pwsh-module/**/*.nupkg'
-        nuGetFeedType: 'internal'
-        publishVstsFeed: 'pipelines-python-sample/python-utility'
-        allowPackageConflicts: true
 - stage: python
-  condition: false
   displayName: Build and Publish Python 🐍
   jobs:
   - job: Build
@@ -47,8 +34,24 @@ stages:
     - task: TwineAuthenticate@1
       displayName: Twine Authenticate
       inputs:
-        artifactFeed: pipelines-python-sample/python-utility
+        artifactFeed: $(project.name)/$(feed.name)
 
     - script: |
         python -m twine upload -r python-utility --config-file $(PYPIRC_PATH) dist/*.whl
       workingDirectory: python-module
+      
+- stage: pwsh
+  displayName: Build and Publish Powershell 🏗️
+  jobs:
+  - job: Build
+    steps:
+    - script: |
+       nuget pack Show-Calendar.nuspec
+      workingDirectory: pwsh-module/Show-Calendar
+    - task: NuGetCommand@2
+      inputs:
+        command: 'push' 
+        packagesToPush: 'pwsh-module/**/*.nupkg'
+        nuGetFeedType: 'internal'
+        publishVstsFeed: '$(project.name)/$(feed.name)'
+        allowPackageConflicts: true

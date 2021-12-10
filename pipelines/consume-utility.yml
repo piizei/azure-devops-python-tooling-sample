@@ -2,7 +2,6 @@ pool:
   vmImage: 'ubuntu-latest'
 variables:
   python.version: 3.6
-  devops.tenant: petjohansson
   project.name: pipelines-python-sample
   feed.name: python-utility
   utility.version: 0.1
