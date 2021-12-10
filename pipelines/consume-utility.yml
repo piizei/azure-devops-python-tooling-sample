@@ -49,8 +49,5 @@ stages:
         pwd
         ls $(System.ArtifactsDirectory)/
     - pwsh:  |
-        dir $(System.ArtifactsDirectory)/
-        #Register-PSRepository -Name Local_Nuget_Feed -SourceLocation $(System.ArtifactsDirectory) -PublishLocation $(System.ArtifactsDirectory) -InstallationPolicy Trusted
-        #Get-PSRepository
-        Install-Package $(System.ArtifactsDirectory) --force
+        Install-Package Show-Calendar -Source $(System.ArtifactsDirectory)
         #Show-Calendar 
