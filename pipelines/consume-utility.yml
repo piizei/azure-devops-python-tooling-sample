@@ -7,7 +7,7 @@ variables:
   utility.version: 0.1
 
 stages:
-- stage: ConsumePwsh
+- stage: ConsumePython
   displayName: Consume Python🐍 🏗️
   jobs:
   - job: Consume
