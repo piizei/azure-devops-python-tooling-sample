@@ -25,17 +25,17 @@
 
  .Example
    # Show a default display of this month.
-   Show-Calendar
+   My-Calendar
 
  .Example
    # Display a date range.
-   Show-Calendar -Start "March, 2010" -End "May, 2010"
+   My-Calendar -Start "March, 2010" -End "May, 2010"
 
  .Example
    # Highlight a range of days.
-   Show-Calendar -HighlightDay (1..10 + 22) -HighlightDate "December 25, 2008"
+   My-Calendar -HighlightDay (1..10 + 22) -HighlightDate "December 25, 2008"
 #>
-function Show-Calendar {
+function My-Calendar {
 param(
     [DateTime] $start = [DateTime]::Today,
     [DateTime] $end = $start,
@@ -140,4 +140,4 @@ while($start -le $end)
 
 }
 }
-Export-ModuleMember -Function Show-Calendar
+Export-ModuleMember -Function My-Calendar

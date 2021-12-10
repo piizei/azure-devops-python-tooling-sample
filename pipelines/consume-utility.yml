@@ -41,13 +41,12 @@ stages:
       inputs:
         packageType: 'nuget'
         feed: $(project.name)/$(feed.name)
-        definition: 'Show-Calendar'
+        definition: 'My-Calendar'
         version: '0.0.1'
         downloadPath: '$(System.ArtifactsDirectory)'
         extract: false
     - pwsh:  |
         Register-PSRepository -Name $(System.ArtifactsDirectory) -SourceLocation $(System.ArtifactsDirectory) -PublishLocation $(System.ArtifactsDirectory) -InstallationPolicy Trusted
-        Install-Module -Scope CurrentUser Show-Calendar -Force
+        Install-Module -Scope CurrentUser My-Calendar -Force
     - pwsh:  |
-        Get-Command -Module Show-Calendar
-        Show-Calendar
+        My-Calendar

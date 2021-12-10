@@ -46,8 +46,8 @@ stages:
   - job: Build
     steps:
     - script: |
-       nuget pack Show-Calendar.nuspec
-      workingDirectory: pwsh-module/Show-Calendar
+       nuget pack My-Calendar.nuspec
+      workingDirectory: pwsh-module/My-Calendar
     - task: NuGetCommand@2
       inputs:
         command: 'push' 
