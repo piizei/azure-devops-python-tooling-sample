@@ -8,7 +8,7 @@ variables:
 
 stages:
 - stage: ConsumePython
-  displayName: Consume Python🐍 🏗️
+  displayName: Consume Python🐍
   jobs:
   - job: Consume
     steps:
@@ -41,7 +41,7 @@ stages:
       inputs:
         packageType: 'nuget'
         feed: $(project.name)/$(feed.name)
-        definition: Show-Calendar
+        definition: 'Show-Calendar'
         version: '0.0.1'
         downloadPath: '$(System.ArtifactsDirectory)'
         extract: false
