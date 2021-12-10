@@ -28,5 +28,5 @@ stages:
         artifactFeed: $(project.name)/$(feed.name)
 
     - script: |
-        pip install --index-url https://pkgs.dev.azure.com/$(project.name)/_packaging/$(feed.name)/pypi/simple utility==$(utility.versiohn)
+        pip install --index-url https://pkgs.dev.azure.com/$(project.name)/_packaging/$(feed.name)/pypi/simple utility==$(utility.version)
         utility xyz
