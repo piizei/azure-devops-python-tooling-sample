@@ -34,4 +34,5 @@ stages:
         artifactFeed: pipelines-python-sample/python-utility
 
     - script: |
+       ls dist/
        python -m twine upload -r python-utility --config-file $(PYPIRC_PATH) dist/*.whl
