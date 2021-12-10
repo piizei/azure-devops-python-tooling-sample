@@ -1,0 +1,29 @@
+pool:
+  vmImage: 'ubuntu-latest'
+variables:
+  python.version: 3.6
+
+stages:
+- stage: Build
+  displayName: Build 🏗️
+  jobs:
+  - job: Build module
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '$(python.version)'
+      displayName: 'Use Python $(python.version)'
+
+    - script: |
+        python -m pip install --upgrade pip
+        pip install twine keyring artifacts-keyring wheel
+      displayName: 'Install dependencies'
+
+    - task: TwineAuthenticate@1
+      displayName: Twine Authenticate
+      inputs:
+        artifactFeed: pipelines-python-sample/python-utility
+
+    - script: |
+        pip install utility==0.1
+        utility xyz
