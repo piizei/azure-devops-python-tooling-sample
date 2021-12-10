@@ -48,4 +48,5 @@ stages:
     - pwsh:  |
         Install-Package -Scope CurrentUser Show-Calendar -Source $(System.ArtifactsDirectory)/
     - pwsh:  |
+        Get-Command -Module Show-Calendar
         Show-Calendar
