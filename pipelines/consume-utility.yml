@@ -7,10 +7,10 @@ variables:
   utility.version: 0.1
 
 stages:
-- stage: Build
-  displayName: Build 🏗️
+- stage: ConsumePwsh
+  displayName: Consume Python🐍 🏗️
   jobs:
-  - job: Build
+  - job: Consume
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -30,3 +30,13 @@ stages:
     - script: |
         pip install utility==$(utility.version)
         utility xyz
+
+- stage: ConsumePwsh
+  displayName: Consume Powershell 🏗️
+  jobs:
+  - job: BuildPwsh
+    steps:
+    - task: NuGetAuthenticate@0
+    - pwsh:  |
+      Register-PackageSource -Name "PackageSource" -Location "https://pkgs.dev.azure.com/petjohansson/pipelines-python-sample/_packaging/python-utility/nuget/v3/index.json" -ProviderName NuGet
+      Get-PSRepository

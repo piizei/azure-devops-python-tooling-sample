@@ -39,7 +39,7 @@ stages:
     - script: |
         python -m twine upload -r python-utility --config-file $(PYPIRC_PATH) dist/*.whl
       workingDirectory: python-module
-      
+
 - stage: pwsh
   displayName: Build and Publish Powershell 🏗️
   jobs:
@@ -54,4 +54,4 @@ stages:
         packagesToPush: 'pwsh-module/**/*.nupkg'
         nuGetFeedType: 'internal'
         publishVstsFeed: '$(project.name)/$(feed.name)'
-        allowPackageConflicts: true
+        allowPackageConflicts: true # Just for testing, can be bit dangerous, you should always update the version
