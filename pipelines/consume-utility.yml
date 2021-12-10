@@ -37,6 +37,14 @@ stages:
   - job: BuildPwsh
     steps:
     - task: NuGetAuthenticate@0
+    - task: DownloadPackage@1
+      inputs:
+        packageType: 'nuget'
+        feed: $(project.name)/$(feed.name)
+        definition: Show-Calendar
+        version: '0.0.1'
+        downloadPath: .
     - pwsh:  |
-        Register-PackageSource -Name "PackageSource" -Location "https://pkgs.dev.azure.com/petjohansson/pipelines-python-sample/_packaging/python-utility/nuget/v2" -ProviderName NuGet
-        Get-PSRepository
+        Install-Package Show-Calendar
+        # Register-PackageSource -Name "PackageSource" -Location "https://pkgs.dev.azure.com/petjohansson/pipelines-python-sample/_packaging/python-utility/nuget/v2" -ProviderName NuGet
+        # Get-PSRepository
