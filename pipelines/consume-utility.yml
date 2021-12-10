@@ -44,8 +44,8 @@ stages:
         definition: Show-Calendar
         version: '0.0.1'
         downloadPath: '$(System.ArtifactsDirectory)'
-        extract: false
+        extract: true
     - pwsh:  |
+        Register-PSRepository -Name Local_Nuget_Feed -SourceLocation $(System.ArtifactsDirectory) -PublishLocation $(System.ArtifactsDirectory) -InstallationPolicy Trusted
         Install-Package Show-Calendar
-        # Register-PackageSource -Name "PackageSource" -Location "https://pkgs.dev.azure.com/petjohansson/pipelines-python-sample/_packaging/python-utility/nuget/v2" -ProviderName NuGet
-        # Get-PSRepository
+       
