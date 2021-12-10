@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name='utility',
     version='0.1',
-    scripts=['utlity'],
+    scripts=['utility'],
     author="Petteri Johansson",
     description="Python package example for azure devops",
     long_description=long_description,
