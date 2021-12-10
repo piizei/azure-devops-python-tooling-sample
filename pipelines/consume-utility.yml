@@ -7,7 +7,7 @@ stages:
 - stage: Build
   displayName: Build 🏗️
   jobs:
-  - job: Build module
+  - job: Build
     steps:
     - task: UsePythonVersion@0
       inputs:
