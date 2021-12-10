@@ -47,5 +47,6 @@ stages:
         extract: true
     - pwsh:  |
         Register-PSRepository -Name Local_Nuget_Feed -SourceLocation $(System.ArtifactsDirectory) -PublishLocation $(System.ArtifactsDirectory) -InstallationPolicy Trusted
+        Get-PSRepository
         Install-Package --force Show-Calendar
         Show-Calendar 
