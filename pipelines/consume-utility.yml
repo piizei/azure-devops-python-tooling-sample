@@ -2,6 +2,7 @@ pool:
   vmImage: 'ubuntu-latest'
 variables:
   python.version: 3.6
+  devops.tenant: petjohansson
   project.name: pipelines-python-sample
   feed.name: python-utility
   utility.version: 0.1
@@ -28,5 +29,5 @@ stages:
         artifactFeed: $(project.name)/$(feed.name)
 
     - script: |
-        pip install --index-url https://pkgs.dev.azure.com/$(project.name)/_packaging/$(feed.name)/pypi/simple utility==$(utility.version)
+        pip install --index-url https://pkgs.dev.azure.com/$(devops.tenant)/$(project.name)/_packaging/$(feed.name)/pypi/simple utility==$(utility.version)
         utility xyz
