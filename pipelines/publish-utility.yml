@@ -19,18 +19,17 @@ stages:
 
     - script: |
         python -m pip install --upgrade pip
+        pip install twine keyring artifacts-keyring
       displayName: 'Install dependencies'
 
     - script: |
-        python setup.py sdist
+        python setup.py bdist_wheel
       displayName: 'Artifact creation'
 
-    - task: CopyFiles@2
+    - task: TwineAuthenticate@1
+      displayName: Twine Authenticate
       inputs:
-        targetFolder: $(Build.ArtifactStagingDirectory)
+        artifactFeed: pipelines-python-sample/python-utility
 
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'dist'
-        publishLocation: 'Container'
+    - script: |
+       python -m twine upload -r python-utility --config-file $(PYPIRC_PATH) dist/*.whl
