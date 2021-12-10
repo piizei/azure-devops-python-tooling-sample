@@ -3,6 +3,7 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+  name: 'Azure Devops'
 variables:
   python.version: 3.6
 
@@ -11,8 +12,6 @@ stages:
   displayName: Build
   jobs:
   - job: Build
-    pool:
-      name: Default
     steps:
     - task: UsePythonVersion@0
       inputs:
