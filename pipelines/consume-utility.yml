@@ -47,4 +47,5 @@ stages:
         extract: false
     - pwsh:  |
         Install-Package -Scope CurrentUser Show-Calendar -Source $(System.ArtifactsDirectory)/
-        Show-Calendar 
+        get-package | where-object {$_.name -match 'Calendar'}
+        Show-Calendar
