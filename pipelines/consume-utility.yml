@@ -49,5 +49,5 @@ stages:
         pwd
         ls $(System.ArtifactsDirectory)/
     - pwsh:  |
-        Install-Package Show-Calendar -Source $(System.ArtifactsDirectory)/
+        Install-Package -Scope CurrentUser Show-Calendar -Source $(System.ArtifactsDirectory)/
         #Show-Calendar 
