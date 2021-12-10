@@ -43,7 +43,8 @@ stages:
         feed: $(project.name)/$(feed.name)
         definition: Show-Calendar
         version: '0.0.1'
-        downloadPath: .
+        downloadPath: '$(System.ArtifactsDirectory)'
+        extract: false
     - pwsh:  |
         Install-Package Show-Calendar
         # Register-PackageSource -Name "PackageSource" -Location "https://pkgs.dev.azure.com/petjohansson/pipelines-python-sample/_packaging/python-utility/nuget/v2" -ProviderName NuGet
