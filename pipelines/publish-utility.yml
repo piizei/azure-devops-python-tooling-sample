@@ -15,11 +15,13 @@ stages:
     - script: |
        nuget pack Show-Calendar.nuspec
       workingDirectory: pwsh-module/Show-Calendar
-    - task: NuGetPublisher@0
+    - task: NuGetCommand@2
       inputs:
-        searchPattern: 'pwsh-module/**/*.nupkg;' 
+        command: 'push' 
+        packagesToPush: 'pwsh-module/**/*.nupkg'
         nuGetFeedType: 'internal'
-        feedName: pipelines-python-sample/python-utility
+        publishVstsFeed: 'pipelines-python-sample/python-utility'
+        allowPackageConflicts: true
 - stage: python
   condition: false
   displayName: Build and Publish Python 🐍
