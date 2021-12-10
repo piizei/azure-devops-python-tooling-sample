@@ -26,7 +26,8 @@ stages:
     - task: PipAuthenticate@1
       inputs:
         artifactFeeds: $(project.name)/$(feed.name)
+        onlyAddExtraIndex: true
 
     - script: |
-        pip install --index-url https://pkgs.dev.azure.com/$(devops.tenant)/$(project.name)/_packaging/$(feed.name)/pypi/simple utility==$(utility.version)
+        pip install utility==$(utility.version)
         utility xyz
