@@ -46,8 +46,8 @@ stages:
         downloadPath: '$(System.ArtifactsDirectory)'
         extract: false
     - pwsh:  |
-        dir $(System.ArtifactsDirectory)
+        dir $(System.ArtifactsDirectory)/
         #Register-PSRepository -Name Local_Nuget_Feed -SourceLocation $(System.ArtifactsDirectory) -PublishLocation $(System.ArtifactsDirectory) -InstallationPolicy Trusted
         #Get-PSRepository
-        #Install-Package --force Show-Calendar
+        Install-Package $(System.ArtifactsDirectory) --force
         #Show-Calendar 
