@@ -3,7 +3,6 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
-  name: 'Azure Devops'
 variables:
   python.version: 3.6
 
