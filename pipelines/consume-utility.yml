@@ -48,4 +48,5 @@ stages:
     - pwsh:  |
         Register-PSRepository -Name $(System.ArtifactsDirectory) -SourceLocation $(System.ArtifactsDirectory) -PublishLocation $(System.ArtifactsDirectory) -InstallationPolicy Trusted
         Install-Module -Scope CurrentUser My-Calendar -Force
-        My-Calendar
+        get-package | where-object {$_.name -match 'My-Calendar'}
+        # My-Calendar
