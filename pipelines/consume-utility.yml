@@ -50,3 +50,5 @@ stages:
         Install-Module -Scope CurrentUser My-Calendar -Force
         get-package | where-object {$_.name -match 'My-Calendar'}
         Get-Command -Module My-Calendar
+
+    
